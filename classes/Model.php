@@ -13,7 +13,7 @@ abstract class Model
         $data = $db->query(
             'SELECT * FROM ' . static::$table,
             [],
-            get_called_class()
+            static::class
         );
         return $data;
     }
@@ -24,7 +24,7 @@ abstract class Model
         $data = $db->query(
             'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT ' . $count,
             [],
-            get_called_class()
+            static::class
         );
         return $data;
     }
@@ -35,7 +35,7 @@ abstract class Model
         $data = $db->query(
             'SELECT * FROM ' . static::$table . ' WHERE id=:id',
             ['id' => $id],
-            get_called_class()
+            static::class
         );
         if (!empty($data)) {
             return $data[0];
