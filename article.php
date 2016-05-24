@@ -1,7 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alien
- * Date: 24.05.2016
- * Time: 16:30
- */
+
+require __DIR__ . '/models/Article.php';
+
+$id = $_GET['id'];
+
+$article = Article::findById($id);
+
+include __DIR__ . '/views/article.php';

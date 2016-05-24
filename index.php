@@ -1,9 +1,7 @@
 <?php
 
-require __DIR__ . '/classes/Db.php';
-require __DIR__ . '/classes/Model.php';
 require __DIR__ . '/models/Article.php';
 
-$articles = Article::findAll();
+$articles = Article::findLast(3);
 
-var_dump($articles);
+include __DIR__ . '/views/index.php';
