@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/Config.php';
+
 class Db
 {
 
@@ -7,7 +9,9 @@ class Db
 
     public function __construct()
     {
-        $this->dbh = new PDO('mysql:host=127.0.0.1;dbname=php', 'root', '');
+        $cfg = \App\Config::getInstance();
+        $dsn = $cfg->data['driver'] . ':host=' . $cfg->data['db']['host'] . ';dbname=' . $cfg->data['db']['dbname'];
+        $this->dbh = new PDO($dsn, $cfg->data['db']['user'], $cfg->data['db']['pass']);
     }
 
     public function query($sql, $params=[], $class='')
