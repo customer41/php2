@@ -11,6 +11,7 @@
 <?php foreach ($articles as $article): ?>
     <h2><?php echo $article->title; ?></h2>
     <p><?php echo $article->lead; ?></p>
+    <p><small>Автор: <?php echo $article->author->name; ?></small></p>
     <a href="/article.php?id=<?php echo $article->id; ?>">Читать новость</a> |
     <a href="/edit.php?id=<?php echo $article->id; ?>">Редактировать</a> |
     <a href="/delete.php?id=<?php echo $article->id; ?>">Удалить</a>

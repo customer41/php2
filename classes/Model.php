@@ -1,12 +1,8 @@
 <?php
 
-require __DIR__ . '/Db.php';
-
 abstract class Model
 {
-
     protected static $table;
-
     public $id;
 
     public static function findAll()
@@ -44,6 +40,17 @@ abstract class Model
         } else {
             return false;
         }
+    }
+
+    public static function findByColumn($column, $value)
+    {
+        $db = new Db();
+        $data = $db->query(
+            'SELECT * FROM ' . static::$table . ' WHERE ' . $column . '=:value',
+            [':value' => $value],
+            static::class
+        );
+        return $data;
     }
 
     public function insert()

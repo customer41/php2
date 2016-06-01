@@ -1,8 +1,10 @@
 <?php
 
-require __DIR__ . '/models/Article.php';
+require __DIR__ . '/autoload.php';
 
 $id = $_GET['id'];
 $article = Article::findById($id);
 
-include __DIR__ . '/views/article.php';
+$view = new View();
+$view->article = $article;
+$view->display('article.php');

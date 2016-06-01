@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/models/Article.php';
+require __DIR__ . '/autoload.php';
 
 $id = $_GET['id'];
 $article = Article::findById($id);

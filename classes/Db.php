@@ -4,7 +4,6 @@ require __DIR__ . '/Config.php';
 
 class Db
 {
-
     protected $dbh;
 
     public function __construct()
@@ -31,4 +30,8 @@ class Db
         return $sth->execute($params);
     }
 
+    public function insertId()
+    {
+        return $this->dbh->lastInsertId();
+    }
 }

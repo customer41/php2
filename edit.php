@@ -1,13 +1,16 @@
 <?php
 
-require __DIR__ . '/models/Article.php';
+require __DIR__ . '/autoload.php';
 
 $id = $_GET['id'];
 $article = Article::findById($id);
 
+$view = new View();
+$view->article = $article;
+
 if (empty($_POST)) {
     if ($article != false) {
-        include __DIR__ . '/views/edit.php';
+        $view->display('edit.php');
     } else {
         header('Location: /index.php');
     }
@@ -15,8 +18,8 @@ if (empty($_POST)) {
     $title = $_POST['title'];
     $lead = $_POST['lead'];
     if ('' == $title || '' == $lead) {
-        $error = 'Заполните все поля!';
-        include __DIR__ . '/views/edit.php';
+        $view->error = 'Заполните все поля!';
+        $view->display('edit.php');
     } else {
         $article->title = $title;
         $article->lead = $lead;

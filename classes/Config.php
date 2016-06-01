@@ -2,8 +2,8 @@
 
 namespace App;
 
-class Config {
-
+class Config
+{
     private static $instance;
     public $data;
 

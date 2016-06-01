@@ -17,6 +17,7 @@
         <label for="lead">Содержание новости: </label><br>
         <textarea id="lead" name="lead" cols="50" rows="10"><?php echo $article->lead; ?></textarea><br>
         <input type="submit" value="Редактировать новость">
+        <small>Автор: <?php echo $article->author->name; ?></small>
     </form>
 </body>
 </html>

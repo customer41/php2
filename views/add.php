@@ -12,6 +12,8 @@
         <p><?php echo $error; ?></p>
     <?php endif; ?>
     <form action="/add.php" method="post">
+        <label for="author">Автор: </label><br>
+        <input type="text" id="author" name="author" style="width: 400px" value="<?php echo $author; ?>"><br>
         <label for="title">Заголовок новости: </label><br>
         <input type="text" id="title" name="title" style="width: 400px" value="<?php echo $title; ?>"><br>
         <label for="lead">Содержание новости: </label><br>
