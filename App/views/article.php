@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1 style="text-align: center">Новостной сайт</h1>
-    <a href="/index.php">На главную</a>
+    <a href="/news/all">На главную</a>
     <hr>
 <?php if (false == $article): ?>
     <p>Запрашиваемая новость не существует</p>
@@ -15,8 +15,8 @@
     <p><?php echo $article->lead; ?></p>
     <p><small>Автор: <?php echo $article->author->name; ?></small></p>
 <?php endif; ?>
-    <a href="/edit.php?id=<?php echo $article->id; ?>">Редактировать</a> |
-    <a href="/delete.php?id=<?php echo $article->id; ?>">Удалить</a>
+    <a href="/admin/edit?id=<?php echo $article->id; ?>">Редактировать</a> |
+    <a href="/admin/delete?id=<?php echo $article->id; ?>">Удалить</a>
     <hr>
 </body>
 </html>

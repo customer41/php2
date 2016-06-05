@@ -1,7 +1,9 @@
 <?php
 
+namespace App\Classes;
+
 class View
-    implements Iterator, ArrayAccess
+    implements \Iterator, \ArrayAccess
 {
     use ActProp;
 

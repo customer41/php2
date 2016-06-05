@@ -2,8 +2,14 @@
 
 require __DIR__ . '/autoload.php';
 
-$articles = Article::findLast(3);
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$pathParts = explode('/', $path);
 
-$view = new View();
-$view['articles'] = $articles;
-$view->display('index.php');
+$ctrl = $pathParts[1] ?: 'News';
+$act = $pathParts[2] ?: 'All';
+
+$controllerClassName = '\App\Controllers\\' . ucfirst($ctrl);
+$controller = new $controllerClassName();
+
+$methodName = 'action' . ucfirst($act);
+$controller->action($methodName);

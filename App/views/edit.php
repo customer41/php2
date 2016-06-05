@@ -6,12 +6,12 @@
 </head>
 <body>
     <h1 style="text-align: center">Новостной сайт</h1>
-    <a href="/index.php">На главную</a>
+    <a href="/news/all">На главную</a>
     <hr>
     <?php if (isset($error)): ?>
         <p><?php echo $error; ?></p>
     <?php endif; ?>
-    <form action="/edit.php?id=<?php echo $article->id; ?>" method="post">
+    <form action="/admin/edit?id=<?php echo $article->id; ?>" method="post">
         <label for="title">Заголовок новости: </label><br>
         <input type="text" id="title" name="title" style="width: 400px" value="<?php echo $article->title; ?>"><br>
         <label for="lead">Содержание новости: </label><br>

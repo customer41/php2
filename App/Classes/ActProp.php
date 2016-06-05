@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Classes;
+
 trait ActProp
 {
     protected $data = [];

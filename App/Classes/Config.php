@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Classes;
 
 class Config
 {
@@ -8,7 +8,7 @@ class Config
     public $data;
 
     private function __construct() {
-        $this->data = require __DIR__ . '/../config.php';
+        $this->data = require __DIR__ . '/../../config.php';
     }
 
     public static function getInstance() {

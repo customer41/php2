@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/Config.php';
+namespace App\Classes;
 
 class Db
 {
@@ -8,9 +8,9 @@ class Db
 
     public function __construct()
     {
-        $cfg = \App\Config::getInstance();
+        $cfg = Config::getInstance();
         $dsn = $cfg->data['driver'] . ':host=' . $cfg->data['db']['host'] . ';dbname=' . $cfg->data['db']['dbname'];
-        $this->dbh = new PDO($dsn, $cfg->data['db']['user'], $cfg->data['db']['pass']);
+        $this->dbh = new \PDO($dsn, $cfg->data['db']['user'], $cfg->data['db']['pass']);
     }
 
     public function query($sql, $params=[], $class='')
@@ -20,7 +20,7 @@ class Db
         if (empty($class)) {
             return $sth->fetchAll();
         } else {
-            return $sth->fetchAll(PDO::FETCH_CLASS, $class);
+            return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
         }
     }
 
