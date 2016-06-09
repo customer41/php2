@@ -24,6 +24,12 @@ class View
         echo $this->render($template);
     }
 
+    public function fill($data) {
+        foreach ($data as $key => $value) {
+            $this->$key = $value;
+        }
+    }
+
     public function current() {
         return current($this->data);
     }

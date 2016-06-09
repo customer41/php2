@@ -2,6 +2,8 @@
 
 namespace App\Classes;
 
+use \App\Exceptions\DbException;
+
 class Db
 {
     protected $dbh;
@@ -16,7 +18,10 @@ class Db
     public function query($sql, $params=[], $class='')
     {
         $sth = $this->dbh->prepare($sql);
-        $sth->execute($params);
+        $result = $sth->execute($params);
+        if (false == $result) {
+            throw new DbException('не удалось выполнить запрос к БД.');
+        }
         if (empty($class)) {
             return $sth->fetchAll();
         } else {
@@ -27,7 +32,11 @@ class Db
     public function execute($query, $params=[])
     {
         $sth = $this->dbh->prepare($query);
-        return $sth->execute($params);
+        $result = $sth->execute($params);
+        if (false == $result) {
+            throw new DbException('не удалось выполнить запрос к БД.');
+        }
+        return $result;
     }
 
     public function insertId()

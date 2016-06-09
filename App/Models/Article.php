@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Classes\Model;
+use App\Exceptions\MultiException;
 
 /**
  * Class Article
@@ -24,5 +25,25 @@ class Article
             return Author::findById($this->author_id);
         }
         return null;
+    }
+
+    public function fill($data) {
+        $errors = new MultiException();
+
+        if (empty($data['title'])) {
+            $errors->add(new \Exception('Пустой заголовок'));
+        }
+        if (empty($data['lead'])) {
+            $errors->add(new \Exception('Пустой текст новости'));
+        }
+        if (empty($data['author'])) {
+            $errors->add(new \Exception('Отсутствует автор новости'));
+        }
+
+        if (0 != count($errors)) {
+            throw $errors;
+        }
+
+        parent::fill($data);
     }
 }

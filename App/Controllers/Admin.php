@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Classes\Controller;
+use App\Exceptions\E404Exception;
+use App\Exceptions\MultiException;
 use App\Models\Article;
 use App\Models\Author;
 
@@ -10,58 +12,48 @@ class Admin
     extends Controller
 {
     public function actionAdd() {
-        if (empty($_POST)) {
-            $this->view->display('add.php');
-        } else {
-            $title = $_POST['title'];
-            $lead = $_POST['lead'];
-            $author = $_POST['author'];
-            if ('' == $title || '' == $lead || '' == $author) {
-                $this->view->title = $title;
-                $this->view->lead = $lead;
-                $this->view->author = $author;
-                $this->view->error = 'Заполните все поля!';
-                $this->view->display('add.php');
+        $this->view->display('add.php');
+    }
+
+    public function actionSave() {
+        try {
+            $article = new Article();
+            $article->fill($_POST);
+            $authors = Author::findByColumn('name', $_POST['author']);
+            if (!empty($authors)) {
+                $article->author_id = $authors[0]->id;
             } else {
-                $article = new Article();
-                $article->title = $title;
-                $article->lead = $lead;
-                $authors = Author::findByColumn('name', $author);
-                if (!empty($authors)) {
-                    $article->author_id = $authors[0]->id;
-                } else {
-                    $a = new Author();
-                    $a->name = $author;
-                    $a->save();
-                    $article->author_id = $a->id;
-                }
-                $article->save();
-                header('Location: /news/all');
+                $author = new Author();
+                $author->name = $_POST['author'];
+                $author->save();
+                $article->author_id = $author->id;
             }
+            $article->save();
+            header('Location: /news/all');
+        } catch (MultiException $e) {
+            $this->view->errors = $e;
+            $this->view->fill($_POST);
+            $this->view->display('add.php');
         }
     }
 
     public function actionEdit() {
         $id = $_GET['id'];
         $article = Article::findById($id);
+        if (false == $article) {
+            throw new E404Exception('запрашиваемая новость не найдена.');
+        }
         $this->view->article = $article;
         if (empty($_POST)) {
-            if ($article != false) {
-                $this->view->display('edit.php');
-            } else {
-                header('Location: /news/all');
-            }
+            $this->view->display('edit.php');
         } else {
-            $title = $_POST['title'];
-            $lead = $_POST['lead'];
-            if ('' == $title || '' == $lead) {
-                $this->view->error = 'Заполните все поля!';
-                $this->view->display('edit.php');
-            } else {
-                $article->title = $title;
-                $article->lead = $lead;
+            try {
+                $article->fill($_POST);
                 $article->save();
                 header('Location: /news/all');
+            } catch (MultiException $e) {
+                $this->view->errors = $e;
+                $this->view->display('edit.php');
             }
         }
     }
@@ -69,9 +61,10 @@ class Admin
     public function actionDelete() {
         $id = $_GET['id'];
         $article = Article::findById($id);
-        if (false != $article) {
-            $article->delete();
+        if (false == $article) {
+            throw new E404Exception('запрашиваемая новость не найдена.');
         }
+        $article->delete();
         header('Location: /news/all');
     }
 }

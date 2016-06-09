@@ -1,0 +1,15 @@
+﻿Time: 2016-06-09 15:45:18
+Location: C:\Server\OpenServer\domains\php.local\App\Controllers\News.php
+Type: App\Exceptions\E404Exception
+Message: запрашиваемая новость не найдена.
+--------------------------------------------------------------------------------------
+Time: 2016-06-09 15:45:29
+Location: C:\Server\OpenServer\domains\php.local\App\Classes\Db.php
+Type: App\Exceptions\DbException
+Message: не удалось выполнить запрос к БД.
+--------------------------------------------------------------------------------------
+Time: 2016-06-09 15:50:01
+Location: C:\Server\OpenServer\domains\php.local\App\Controllers\News.php
+Type: App\Exceptions\E404Exception
+Message: запрашиваемая новость не найдена.
+--------------------------------------------------------------------------------------
