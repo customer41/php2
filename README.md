@@ -9,3 +9,6 @@
     данные из конфига и сохраняет в себе. В конфиге почтовые данные отправителя и получателя (логин, пароль и т.д.).
     Конфиг в git не добавлял! У класса \App\Classes\SendMail создал функцию send(), которая и работает с библитекой
     swiftmailer/swiftmailer.
+4. Оформил пакет composer "multiexception". Ссылка https://packagist.org/packages/customer41/multiexception.
+    Ссылка на репозиторий на гитхабе: https://github.com/customer41/multiexception
+    А также установил через composer и использовал в своём проекте.
