@@ -1,5 +1,7 @@
 {
   "require": {
-    "swiftmailer/swiftmailer": "5.4.2"
+    "swiftmailer/swiftmailer": "5.4.2",
+    "phpunit/php-timer": "1.0.8",
+    "customer41/multiexception": "dev-master"
   }
 }

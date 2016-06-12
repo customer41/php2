@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Classes\Controller;
 use App\Exceptions\E404Exception;
-use App\Exceptions\MultiException;
 use App\Models\Article;
 use App\Models\Author;
 
@@ -32,7 +31,7 @@ class Admin
             }
             $article->save();
             header('Location: /news/all');
-        } catch (MultiException $e) {
+        } catch (\MultiException $e) {
             $this->view->errors = $e;
             $this->view->fill($_POST);
             $this->view->display('add.php');
@@ -54,7 +53,7 @@ class Admin
                 $article->fill($_POST);
                 $article->save();
                 header('Location: /news/all');
-            } catch (MultiException $e) {
+            } catch (\MultiException $e) {
                 $this->view->errors = $e;
                 $this->view->display('edit.php');
             }

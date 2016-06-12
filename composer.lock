@@ -4,9 +4,77 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7c789637d2809358b64fa0bb0d6588c3",
-    "content-hash": "7abb2dbfd1034192641f0a62210edce4",
+    "hash": "79d23aecc6a04286e786f6d6dc890f10",
+    "content-hash": "660905e6747e13e30327121bd9b94185",
     "packages": [
+        {
+            "name": "customer41/multiexception",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/customer41/multiexception.git",
+                "reference": "e01b72ee217d3015809a7107eae40be8b1ae4e0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/customer41/multiexception/zipball/e01b72ee217d3015809a7107eae40be8b1ae4e0e",
+                "reference": "e01b72ee217d3015809a7107eae40be8b1ae4e0e",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "MultiException.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "This is a simple package for education purposes, that implements the concept of 'multiexceptions'",
+            "time": "2016-06-12 12:49:35"
+        },
+        {
+            "name": "phpunit/php-timer",
+            "version": "1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/php-timer.git",
+                "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-timer/zipball/38e9124049cf1a164f1e4537caf19c99bf1eb260",
+                "reference": "38e9124049cf1a164f1e4537caf19c99bf1eb260",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4|~5"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Bergmann",
+                    "email": "sb@sebastian-bergmann.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "Utility class for timing",
+            "homepage": "https://github.com/sebastianbergmann/php-timer/",
+            "keywords": [
+                "timer"
+            ],
+            "time": "2016-05-12 18:03:57"
+        },
         {
             "name": "swiftmailer/swiftmailer",
             "version": "v5.4.2",
@@ -64,7 +132,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "customer41/multiexception": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
