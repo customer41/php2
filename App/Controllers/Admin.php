@@ -11,11 +11,13 @@ use App\Models\Author;
 class Admin
     extends Controller
 {
-    public function actionAdd() {
+    public function actionAdd()
+    {
         $this->view->display('add.php');
     }
 
-    public function actionSave() {
+    public function actionSave()
+    {
         try {
             $article = new Article();
             $article->fill($_POST);
@@ -37,7 +39,8 @@ class Admin
         }
     }
 
-    public function actionEdit() {
+    public function actionEdit()
+    {
         $id = $_GET['id'];
         $article = Article::findById($id);
         if (false == $article) {
@@ -58,7 +61,8 @@ class Admin
         }
     }
 
-    public function actionDelete() {
+    public function actionDelete()
+    {
         $id = $_GET['id'];
         $article = Article::findById($id);
         if (false == $article) {

@@ -9,7 +9,8 @@ class View
 
     const PATH = __DIR__ . '/../views/';
 
-    public function render($template) {
+    public function render($template)
+    {
         foreach($this->data as $key => $value) {
             $$key = $value;
         }
@@ -20,45 +21,55 @@ class View
         return $content;
     }
 
-    public function display($template) {
+    public function display($template)
+    {
         echo $this->render($template);
     }
 
-    public function fill($data) {
+    public function fill($data)
+    {
         foreach ($data as $key => $value) {
             $this->$key = $value;
         }
     }
 
-    public function current() {
+    public function current()
+    {
         return current($this->data);
     }
 
-    public function next() {
+    public function next()
+    {
         next($this->data);
     }
 
-    public function key() {
+    public function key()
+    {
         return key($this->data);
     }
 
-    public function valid() {
+    public function valid()
+    {
         return isset($this->data[$this->key()]);
     }
 
-    public function rewind() {
+    public function rewind()
+    {
         reset($this->data);
     }
 
-    public function offsetExists($offset) {
+    public function offsetExists($offset)
+    {
         return isset($this->data[$offset]);
     }
 
-    public function offsetGet($offset) {
+    public function offsetGet($offset)
+    {
         return isset($this->data[$offset]) ? $this->data[$offset] : null;
     }
 
-    public function offsetSet($offset, $value) {
+    public function offsetSet($offset, $value)
+    {
         if (is_null($offset)) {
             $this->data[] = $value;
         } else {
@@ -66,7 +77,8 @@ class View
         }
     }
 
-    public function offsetUnset($offset) {
+    public function offsetUnset($offset)
+    {
         unset($this->data[$offset]);
     }
 }

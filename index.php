@@ -4,6 +4,7 @@ use \App\Classes\View;
 use \App\Exceptions\E404Exception;
 use \App\Exceptions\DbException;
 use \App\Classes\LogException;
+use \App\Classes\SendMail;
 
 require __DIR__ . '/autoload.php';
 
@@ -18,8 +19,7 @@ try {
     $controller = new $controllerClassName();
     $methodName = 'action' . ucfirst($act);
     $controller->action($methodName);
-}
-catch (E404Exception $e) {
+} catch (E404Exception $e) {
     $log = new LogException($e);
     $log->writeToLogFile();
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
@@ -29,6 +29,19 @@ catch (E404Exception $e) {
 } catch (DbException $e) {
     $log = new LogException($e);
     $log->writeToLogFile();
+    $view = new View();
+    $view->error = $e;
+    $view->display('error.php');
+} catch (\PDOException $e) {
+    $log = new LogException($e);
+    $log->writeToLogFile();
+
+    $mail = new SendMail();
+    $mail->subject = 'Проблема с подключением к БД';
+    $mail->message = 'Возникла проблема с подключением к базе данных. ' . $e->getMessage();
+    $mail->recipient = 'Admin';
+    $mail->send();
+    
     $view = new View();
     $view->error = $e;
     $view->display('error.php');

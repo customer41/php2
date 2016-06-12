@@ -1,5 +1,13 @@
 <?php
 
-function __autoload($class) {
-    require __DIR__ . '/' . str_replace('\\', '/', $class) . '.php';
-}
+spl_autoload_register(
+    function ($class)
+    {
+        $fileName = __DIR__ . '/' . str_replace('\\', '/', $class) . '.php';
+        if (file_exists($fileName)) {
+            require $fileName;
+        }
+    }
+);
+
+require __DIR__ . '/vendor/autoload.php';

@@ -10,7 +10,8 @@ class MultiException
 {
     protected $errors = [];
 
-    public function add($value) {
+    public function add($value)
+    {
         $this->errors[] = $value;
     }
 

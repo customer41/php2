@@ -111,7 +111,8 @@ abstract class Model
         $db->execute($sql, [':id' => $this->id]);
     }
 
-    public function fill($data) {
+    public function fill($data)
+    {
         foreach ($data as $key => $value) {
             if (property_exists($this, $key)) {
                 $this->$key = $value;

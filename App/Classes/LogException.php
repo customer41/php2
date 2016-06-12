@@ -9,14 +9,16 @@ class LogException
     protected $exception;
     protected $errorMsg;
 
-    public function __construct($exception) {
+    public function __construct($exception)
+    {
         $this->time = date('Y-m-d H:i:s', time());
         $this->location = $exception->getFile();
         $this->exception = get_class($exception);
         $this->errorMsg = $exception->getMessage();
     }
 
-    public function writeToLogFile() {
+    public function writeToLogFile()
+    {
         $entry  = 'Time: ' . $this->time . "\r\n";
         $entry .= 'Location: ' . $this->location . "\r\n";
         $entry .= 'Type: ' . $this->exception . "\r\n";

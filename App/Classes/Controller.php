@@ -2,18 +2,21 @@
 
 namespace App\Classes;
 
-class Controller {
+class Controller
+{
 
     /**
      * @var \App\Classes\View
      */
     protected $view;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->view = new View();
     }
 
-    public function action($action) {
+    public function action($action)
+    {
         if (false == $this->access()) {
             echo 'access denied';
         } else {
@@ -21,7 +24,8 @@ class Controller {
         }
     }
 
-    public function access() {
+    public function access()
+    {
         return true;
     }
 }

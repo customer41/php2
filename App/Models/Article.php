@@ -20,14 +20,16 @@ class Article
     public $lead;
     public $author_id;
 
-    public function __get($prop) {
+    public function __get($prop)
+    {
         if (!empty($this->author_id) && 'author' == $prop) {
             return Author::findById($this->author_id);
         }
         return null;
     }
 
-    public function fill($data) {
+    public function fill($data)
+    {
         $errors = new MultiException();
 
         if (empty($data['title'])) {

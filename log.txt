@@ -13,3 +13,13 @@ Location: C:\Server\OpenServer\domains\php.local\App\Controllers\News.php
 Type: App\Exceptions\E404Exception
 Message: запрашиваемая новость не найдена.
 --------------------------------------------------------------------------------------
+Time: 2016-06-11 11:28:17
+Location: C:\Server\OpenServer\domains\php.local\App\Controllers\News.php
+Type: App\Exceptions\E404Exception
+Message: запрашиваемая новость не найдена.
+--------------------------------------------------------------------------------------
+Time: 2016-06-12 11:51:31
+Location: C:\Server\OpenServer\domains\php.local\App\Classes\Db.php
+Type: PDOException
+Message: SQLSTATE[HY000] [1049] Unknown database 'pp'
+--------------------------------------------------------------------------------------
