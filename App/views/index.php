@@ -6,16 +6,14 @@
 </head>
 <body>
     <h1 style="text-align: center">Новостной сайт</h1>
-    <a href="/admin/add">Добавить новость</a>
+    <a href="/admin/all">Админ-панель</a>
     <hr>
-<?php foreach ($articles as $article): ?>
-    <h2><?php echo $article->title; ?></h2>
-    <p><?php echo $article->lead; ?></p>
-    <p><small>Автор: <?php echo $article->author->name; ?></small></p>
-    <a href="/news/one?id=<?php echo $article->id; ?>">Читать новость</a> |
-    <a href="/admin/edit?id=<?php echo $article->id; ?>">Редактировать</a> |
-    <a href="/admin/delete?id=<?php echo $article->id; ?>">Удалить</a>
-    <hr>
-<?php endforeach; ?>
+    <?php foreach ($articles as $article): ?>
+        <h2><?php echo $article->title; ?></h2>
+        <p><?php echo $article->lead; ?></p>
+        <p><small>Автор: <?php echo $article->author->name; ?></small></p>
+        <a href="/news/one?id=<?php echo $article->id; ?>">Читать новость</a>
+        <hr>
+    <?php endforeach; ?>
 </body>
 </html>

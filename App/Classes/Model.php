@@ -21,7 +21,7 @@ abstract class Model
     public static function findLast($count)
     {
         $db = new Db();
-        $data = $db->query(
+        $data = $db->queryEach(
             'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT ' . $count,
             [],
             static::class

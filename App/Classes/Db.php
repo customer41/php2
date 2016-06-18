@@ -29,6 +29,23 @@ class Db
         }
     }
 
+    public function queryEach($sql, $params=[], $class='')
+    {
+        $sth = $this->dbh->prepare($sql);
+        $result = $sth->execute($params);
+        if (false == $result) {
+            throw new DbException('не удалось выполнить запрос к БД.');
+        }
+        if (!empty($class)) {
+            $sth->setFetchMode(\PDO::FETCH_CLASS, $class);
+        }
+        $count = $sth->rowCount();
+        while (0 != $count) {
+            yield $sth->fetch();
+            $count--;
+        }
+    }
+
     public function execute($query, $params=[])
     {
         $sth = $this->dbh->prepare($query);

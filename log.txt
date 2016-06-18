@@ -23,3 +23,13 @@ Location: C:\Server\OpenServer\domains\php.local\App\Classes\Db.php
 Type: PDOException
 Message: SQLSTATE[HY000] [1049] Unknown database 'pp'
 --------------------------------------------------------------------------------------
+Time: 2016-06-17 18:34:06
+Location: C:\Server\OpenServer\domains\php.local\App\Classes\Db.php
+Type: App\Exceptions\DbException
+Message: не удалось выполнить запрос к БД.
+--------------------------------------------------------------------------------------
+Time: 2016-06-17 18:56:53
+Location: C:\Server\OpenServer\domains\php.local\App\Classes\Db.php
+Type: App\Exceptions\DbException
+Message: не удалось выполнить запрос к БД.
+--------------------------------------------------------------------------------------

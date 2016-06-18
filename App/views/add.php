@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1 style="text-align: center">Новостной сайт</h1>
-    <a href="/news/all">На главную</a>
+    <a href="/admin/all">Админ-панель</a>
     <hr>
     <?php if (isset($errors)): ?>
         <?php foreach($errors as $error): ?>

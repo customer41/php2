@@ -12,3 +12,11 @@
 4. Оформил пакет composer "multiexception". Ссылка https://packagist.org/packages/customer41/multiexception.
     Ссылка на репозиторий на гитхабе: https://github.com/customer41/multiexception
     А также установил через composer и использовал в своём проекте.
+
+Домашнее задание №7
+
+1. Создал метод queryEach() в классе Db. Использовал его в методе findLast() абстрактной модели. Циклом foreach
+    прошелся по генератору в index.php
+2. Создал класс AdminDataTable по заданию
+3. В админ-контроллере создал метод actionShowAuthors(), который выводит всех авторов в виде таблицы, используя класс
+    AdminDataTable

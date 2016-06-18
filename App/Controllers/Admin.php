@@ -6,10 +6,36 @@ use App\Classes\Controller;
 use App\Exceptions\E404Exception;
 use App\Models\Article;
 use App\Models\Author;
+use App\Classes\AdminDataTable;
 
 class Admin
     extends Controller
 {
+    public function actionAll()
+    {
+        $articles = Article::findAll();
+        $this->view->articles = $articles;
+        $this->view->display('admin.php');
+    }
+    
+    public function actionShowAuthors()
+    {
+        $authors = Author::findAll();
+        $columns = [
+            'ID' => function($author)
+            {
+                return $author->id;
+            },
+            'Имя' => function($author)
+            {
+                return $author->name;
+            },
+        ];
+        $table = new AdminDataTable($authors, $columns);
+        $this->view->tableAuthors = $table->render();
+        $this->view->display('authors.php');
+    }
+    
     public function actionAdd()
     {
         $this->view->display('add.php');
@@ -30,7 +56,7 @@ class Admin
                 $article->author_id = $author->id;
             }
             $article->save();
-            header('Location: /news/all');
+            header('Location: /admin/all');
         } catch (\MultiException $e) {
             $this->view->errors = $e;
             $this->view->fill($_POST);
@@ -52,7 +78,7 @@ class Admin
             try {
                 $article->fill($_POST);
                 $article->save();
-                header('Location: /news/all');
+                header('Location: /admin/all');
             } catch (\MultiException $e) {
                 $this->view->errors = $e;
                 $this->view->display('edit.php');
@@ -68,6 +94,6 @@ class Admin
             throw new E404Exception('запрашиваемая новость не найдена.');
         }
         $article->delete();
-        header('Location: /news/all');
+        header('Location: /admin/all');
     }
 }
